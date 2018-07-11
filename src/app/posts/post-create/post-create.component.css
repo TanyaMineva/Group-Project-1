@@ -1,0 +1,39 @@
+mat-form-field,
+textarea {
+  width: 100%;
+  font-style: italic;
+}
+
+button {
+  margin-bottom: 0.2rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}
+
+mat-card {
+  position: absolute;
+  margin-left: 22em;
+  margin-top: 55em;
+  width: 30em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button {
+  background: #D66A00;
+  color: white;
+}

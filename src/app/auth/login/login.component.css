@@ -1,0 +1,17 @@
+mat-form-field {
+  width: 100%;
+  font-style: italic;
+}
+
+mat-card {
+  position: absolute;
+  margin-left: 22em;
+  margin-top: 35em;
+  width: 30em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button {
+  background: #D66A00;
+  color: white;
+}
