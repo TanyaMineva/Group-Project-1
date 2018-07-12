@@ -5,9 +5,9 @@ mat-form-field {
 
 mat-card {
   position: absolute;
-  margin-left: 22em;
+  margin-left: 20em;
   margin-top: 35em;
-  width: 30em;
+  width: 40em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 

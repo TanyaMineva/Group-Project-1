@@ -24,6 +24,54 @@
             required>
             <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
       </mat-form-field>
+      <mat-form-field>
+        <input
+        type="password"
+        name="passwordConf"
+        ngModel
+        matInput
+        placeholder="Password Configuration"
+        #passwordConfInput="ngModel"
+        required>
+        <mat-error *ngIf="passwordConfInput.invalid">Please enter a valid password.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    type="text"
+    name="name"
+    ngModel
+    matInput
+    placeholder="Name"
+    #nameInput="ngModel"
+    required>
+    <mat-error *ngIf="nameInput.invalid">Please enter a valid name.</mat-error>
+</mat-form-field>
+ 
+  <mat-form-field>
+    <input
+    type="tel"
+    name="tel"
+    ngModel
+    matInput
+    placeholder="Telephone number"
+    #telInput="ngModel"
+    >
+    <mat-error *ngIf="telInput.invalid">Please enter a valid telephon number.</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+    <input
+    type="text"
+    name="adresse"
+    ngModel
+    matInput
+    placeholder="Adresse"
+    #adresseInput="ngModel"
+    required>
+    <mat-error *ngIf="adresseInput.invalid">Please enter a valid adresse.</mat-error>
+</mat-form-field>
+
       <button mat-raised-button type="submit" *ngIf="!isLoading">Sign up</button>
   </form>
 </mat-card>

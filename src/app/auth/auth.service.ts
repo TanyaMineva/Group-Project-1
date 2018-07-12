@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { AuthData } from './auth-data.model';
+import { LoginData } from './auth-data.model';
 
 const BACKEND_URL = environment.apiUrl + '/user/';
 
@@ -34,8 +35,8 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  createUser(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  createUser(email: string, password: string, adresse: string, tel: string, name: string) {
+    const authData: AuthData = { email: email, password: password, adresse: adresse, tel: tel, name: name };
     return this.http
       .post(BACKEND_URL + '/signup', authData)
       .subscribe(() => {
@@ -46,11 +47,11 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+    const loginData: LoginData = { email: email, password: password};
     this.http
       .post<{ token: string; expiresIn: number, userId: string }>(
         BACKEND_URL + '/login',
-        authData
+        loginData
       )
       .subscribe(response => {
         const token = response.token;

@@ -8,7 +8,11 @@ exports.createUser =  (req, res, next) => {
   .then(hash => {
     const user = new User({
       email: req.body.email,
-      password: hash
+      password: hash,
+      passwordConf: hash,
+      adresse: req.body.adresse,
+      tel: req.body.tel,
+      name: req.body.name
     })
     user.save()
       .then(result => {
