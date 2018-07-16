@@ -1,21 +1,22 @@
-<mat-toolbar>
-  <span><a routerLink="/" >Main Page</a></span>
-  <span class="spacer"></span>
-  <ul>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/create" routerLinkActive="router-link-active">New Post</a>
-    </li>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/auth/login" routerLinkActive="router-link-active">Login</a>
-    </li>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/auth/signup" routerLinkActive="router-link-active">Sign up</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <button class="logout" mat-button (click)="onLogout()">Logout</button>
-    </li>
-  </ul>
-</mat-toolbar>
+<div class="w3-top">
+  <div class="topnav" id="myNavbar">
+  <a routerLink="/">Home</a>
+  <div class="float-right">
+  <a routerLink="/create" *ngIf="userIsAuthenticated">My Page</a>
+  <div class="dropdown">
+    <a class="dropbtn">My Profile</a>
+    <div class="dropdown-content">
+      <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
+      <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
+      <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign in</a>
+    </div>
+  </div>
+</div>
+  <a href="javascript:void(0);" class="icon" (click)="respNav()">
+  <i class="fa fa-bars"></i>
+  </a>
+  </div>
+  </div>
 
 <form class="form-wrapper cf">
   	<input type="text" placeholder="Search here..." required>
