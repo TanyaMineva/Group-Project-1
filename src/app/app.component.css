@@ -1,11 +1,11 @@
 main {
-    width: 80%;
-    margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
 div {
-    background-image: url("https://designrfix.com/wp-content/uploads/2016/07/desk-notebook-office-macbook.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    height: 50em;
+  background-image: url("https://designrfix.com/wp-content/uploads/2016/07/desk-notebook-office-macbook.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  height: 50em;
 }

@@ -3,6 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+
+
 exports.createUser =  (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
@@ -28,6 +30,8 @@ exports.createUser =  (req, res, next) => {
       });
   });
 }
+
+
 
 exports.userLogin = (req, res, next) => {
   let fetchedUser;                            // Because user only exists in the first then block

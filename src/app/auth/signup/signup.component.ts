@@ -22,9 +22,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   onSignUp(form: NgForm) {
-    if (form.invalid) {
-      return;
+   if (form.invalid || (form.value.password !== form.value.passwordConf)) {
+      console.log('passwords do not match');
+      return window.alert('Passwords do not match');
     }
     this.isLoading = true;
     this.authService.createUser(form.value.email, form.value.password, form.value.adresse, form.value.tel, form.value.name);
