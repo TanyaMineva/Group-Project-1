@@ -1,44 +1,27 @@
-<div class="w3-top">
-<<<<<<< HEAD
-  <div class="topnav" id="myNavbar">
-  <a routerLink="/">Home</a>
-  <div class="float-right">
-  <a routerLink="/create" *ngIf="userIsAuthenticated" routerLink="/myprofile">My Page</a>
-  <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
-  <div class="dropdown">
-    <div class="dropbtn" *ngIf="!userIsAuthenticated">My Profile</div>
-    <div class="dropdown-content">
-      <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
-      
-      <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign in</a>
-=======
-    <div class="topnav" id="myNavbar">
-        <a routerLink="/">Home</a>
-        <div class="float-right">
-            <a routerLink="/create" *ngIf="userIsAuthenticated">My Page</a>
-            <div class="dropdown">
-                <div class="dropbtn">My Profile</div>
-                <div class="dropdown-content">
-                    <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
-                    <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
-                    <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign up</a>
-                </div>
-            </div>
-        </div>
-        <a href="javascript:void(0);" class="icon" (click)="respNav()">
-            <i class="fa fa-bars"></i>
-        </a>
->>>>>>> bd9ec7a4e0b4c957ef9a856484393a28c2366064
-    </div>
-</div>
+<mat-toolbar>
+  <span><a routerLink="/" >Main Page</a></span>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="router-link-active">New Post</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="router-link-active">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/auth/signup" routerLinkActive="router-link-active">Sign up</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button class="logout" mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>
 
-<<<<<<< HEAD
-
-
-
-=======
 <form class="form-wrapper cf">
-    <input type="text" placeholder="Search here..." required>
-    <button type="submit">Search</button>
+  	<input type="text" placeholder="Search here..." required>
+	  <button type="submit">Search</button>
 </form>
->>>>>>> bd9ec7a4e0b4c957ef9a856484393a28c2366064
+
+
+
+

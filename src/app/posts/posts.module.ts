@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -16,8 +16,7 @@ import { AngularMaterialModule } from '../angular-material.module';
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    RouterModule,
-    FormsModule
+    RouterModule
   ]
 })
 
