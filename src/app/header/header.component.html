@@ -1,4 +1,5 @@
 <div class="w3-top">
+<<<<<<< HEAD
   <div class="topnav" id="myNavbar">
   <a routerLink="/">Home</a>
   <div class="float-right">
@@ -10,15 +11,34 @@
       <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
       
       <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign in</a>
+=======
+    <div class="topnav" id="myNavbar">
+        <a routerLink="/">Home</a>
+        <div class="float-right">
+            <a routerLink="/create" *ngIf="userIsAuthenticated">My Page</a>
+            <div class="dropdown">
+                <div class="dropbtn">My Profile</div>
+                <div class="dropdown-content">
+                    <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
+                    <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
+                    <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign up</a>
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="icon" (click)="respNav()">
+            <i class="fa fa-bars"></i>
+        </a>
+>>>>>>> bd9ec7a4e0b4c957ef9a856484393a28c2366064
     </div>
-  </div>
 </div>
-  <a href="javascript:void(0);" class="icon" (click)="respNav()">
-  <i class="fa fa-bars"></i>
-  </a>
-  </div>
-  </div>
+
+<<<<<<< HEAD
 
 
 
-
+=======
+<form class="form-wrapper cf">
+    <input type="text" placeholder="Search here..." required>
+    <button type="submit">Search</button>
+</form>
+>>>>>>> bd9ec7a4e0b4c957ef9a856484393a28c2366064
