@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
-
+import { FormsModule } from '@angular/forms';
 import { Post } from '../post.model';
 import { PostService } from '../posts.service';
 import { AuthService } from '../../auth/auth.service';

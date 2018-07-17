@@ -2,12 +2,13 @@
   <div class="topnav" id="myNavbar">
   <a routerLink="/">Home</a>
   <div class="float-right">
-  <a routerLink="/create" *ngIf="userIsAuthenticated">My Page</a>
+  <a routerLink="/create" *ngIf="userIsAuthenticated" routerLink="/myprofile">My Page</a>
+  <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
   <div class="dropdown">
-    <a class="dropbtn">My Profile</a>
+    <div class="dropbtn" *ngIf="!userIsAuthenticated">My Profile</div>
     <div class="dropdown-content">
       <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
-      <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
+      
       <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign in</a>
     </div>
   </div>
@@ -17,11 +18,6 @@
   </a>
   </div>
   </div>
-
-<form class="form-wrapper cf">
-  	<input type="text" placeholder="Search here..." required>
-	  <button type="submit">Search</button>
-</form>
 
 
 

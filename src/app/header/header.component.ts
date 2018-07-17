@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
-  
+
     respNav() {
     const i = document.getElementById('myNavbar');
     if (i.className === 'topnav') {

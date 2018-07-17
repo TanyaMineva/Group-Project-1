@@ -12,13 +12,15 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostModule } from './posts/posts.module';
+import { MyProfileComponent } from './profile/myprofile.component';
 // import { PostService } from './posts/posts.service';
 
 @NgModule({         // We declare the classes
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    MyProfileComponent
   ],
   imports: [            // We import the components
     BrowserModule,
