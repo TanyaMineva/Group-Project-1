@@ -1,20 +1,29 @@
 {
+  // tslint tests/*.ts -t verbose
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "problemMatcher": { // dobaveno
+    "base": "$tslint5", // dobaveno
+    "owner": "tslint", // dobaveno
+    "applyTo": "closedDocuments", // dobaveno
+    "fileLocation": "absolute", // dobaveno
+    "severity": "warning", // dobaveno
+    "pattern": "$tslint5" // dobaveno
+  }, // dobaveno
   "rules": {
-    "arrow-return-shorthand": true,
+    "arrow-return-shorthand": false, // true
     "callable-types": true,
     "class-name": true,
     "comment-format": [
-      true,
+      false, // true
       "check-space"
     ],
     "curly": true,
     "deprecation": {
       "severity": "warn"
     },
-    "eofline": true,
+    "eofline": false, // true
     "forin": true,
     "import-blacklist": [
       true,
@@ -22,13 +31,13 @@
     ],
     "import-spacing": true,
     "indent": [
-      true,
+      false, //true
       "spaces"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
-      true,
+      false, // true
       140
     ],
     "member-access": false,
@@ -69,8 +78,9 @@
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": false, // true
     "no-unnecessary-initializer": true,
+    "no-unnecessary-callback-wrapper": true, // dobaveno
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
@@ -79,12 +89,12 @@
       true,
       "check-open-brace",
       "check-catch",
-      "check-else",
-      "check-whitespace"
+      "check-else"
+      // "check-whitespace"
     ],
     "prefer-const": true,
     "quotemark": [
-      true,
+      false, // true
       "single"
     ],
     "radix": true,
@@ -93,8 +103,10 @@
       "always"
     ],
     "triple-equals": [
-      true,
-      "allow-null-check"
+      // true,
+      false,
+      "allow-null-check",
+      "allow-undefined-check" // dobaveno
     ],
     "typedef-whitespace": [
       true,
@@ -109,7 +121,7 @@
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
-      true,
+      false, // true
       "check-branch",
       "check-decl",
       "check-operator",
