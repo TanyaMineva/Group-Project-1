@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="row top1">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: black; color: white;">
+                    <h4>Edit Profile</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            <div class="col-sm-6">
+                                <div align="center">
+                                    <div *ngIf="imagePreview !== ''">
+                                        <img alt="Company's Logo" [src]="imagePreview" id="profile-image1" class="img-circle img-responsive">
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-warning" (click)="filePicker.click()" style="margin-top:0.7em;">Pick Image</button>
+                                        <input type="file" #filePicker (change)="onImagePicked($event)">
+                                    </div>
+
+                                    <input id="profile-image-upload" class="hidden" type="file">
+                                    <div style="color:#999;">click here to add company's logo</div>
+                                    <!--Upload Image Js And Css-->
+                                </div>
+                                <br>
+                                <!-- /input-group -->
+                            </div>
+                            <div class="col-sm-6">
+                                <h4 style="color:#00b1b1;">Company name</h4>
+                                <span>
+                                    <p>Company name</p>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr style="margin:5px 0 5px 0;">
+
+                            <div class="col-sm-6 col-xs-7 tital ">
+
+                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 4%;">Website: </div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 8%;">Workfield: </div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 7%;">Services: </div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 1%;">Year of creation:</div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+
+                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 6%;">Location:</div>
+
+                                <div class="clearfix"></div>
+                                <div class="bot-border"></div>
+                            </div>
+
+                            <div class="col-sm-6 col-xs-5 ">
+                                <form [formGroup]="form" *ngIf="!isLoading">
+                                    <mat-form-field>
+                                        <div class="col-sm-7 col-xs-6 ">
+                                            <input matInput type="url" formControlName="website" placeholder="Company website" style="cursor: pointer;" required>
+                                        </div>
+                                        <mat-error *ngIf="form.get('website').invalid && form.get('website').touched">Please enter a valid url.</mat-error>
+                                    </mat-form-field>
+
+                                    <div class="clearfix"></div>
+
+                                    <mat-form-field>
+                                        <div class="col-sm-7 col-xs-6 ">
+                                            <input matInput type="text" formControlName="workfield" placeholder="Workfield" style="cursor: pointer;">
+                                        </div>
+                                    </mat-form-field>
+
+                                    <div class="clearfix"></div>
+
+                                    <mat-form-field>
+                                        <div class="col-sm-7 col-xs-6 ">
+                                            <input matInput type="text" formControlName="services" placeholder="Services" style="cursor: pointer;">
+                                        </div>
+                                    </mat-form-field>
+
+                                    <div class="clearfix"></div>
+
+                                    <mat-form-field>
+                                        <div class="col-sm-7 col-xs-6 ">
+                                            <input matInput type="number" min="1800" max="2018" formControlName="year" placeholder="Year of creation" style="cursor: pointer;" required>
+                                        </div>
+                                        <mat-error *ngIf="form.get('year').invalid && form.get('year').touched">Please enter an existing year.</mat-error>
+                                    </mat-form-field>
+
+                                    <div class="clearfix"></div>
+
+                                    <mat-form-field>
+                                        <div class="col-sm-7 col-xs-6 ">
+                                            <input matInput type="text" formControlName="location" placeholder="Location" style="cursor: pointer;">
+                                        </div>
+                                    </mat-form-field>
+                                </form>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <div class="border" style="margin-top: 5%; border-style: solid; border-width: 1px; border-color: #6495ED;"></div>
+
+                            <mat-action-row>
+                                <button mat-button (click)="saveProfile()" color="primary" style="float: right; margin-top: 1%;">SAVE</button>
+                            </mat-action-row>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(function() {
+                $('#profile-image1').on('click', function() {
+                    $('#profile-image-upload').click();
+                });
+            });
+        </script>
+    </div>
+</div>
