@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 import { Post } from '../post.model';
 import { AuthService } from '../../auth/auth.service';
 import { PostService } from '../posts.service';
-import { mimeType } from './mime-type.validator';
+import { mimeType } from '../../profile/edit-profile/mime-type.validator';
 
 @Component({   // Decorator
   selector: 'app-post-create',

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Post } from './post.model';
 
-const BACKEND_URL = environment.apiUrl + '/posts/';
+const BACKEND_URL = environment.apiUrl + '/profiles';
 
 @Injectable({providedIn: 'root'})  // It provides this on the root level
                                    // Angular finds it

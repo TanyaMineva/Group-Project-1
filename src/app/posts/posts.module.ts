@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PostCreateComponent } from './post-create/post-create.component';
-import { PostListComponent } from './post-list/post-list.component';
+import { ProfileListComponent } from './post-list/profile-list.component';
 import { AngularMaterialModule } from '../angular-material.module';
 
 @NgModule ({
   declarations: [
     PostCreateComponent,
-    PostListComponent
+    ProfileListComponent
   ],
   imports: [
     CommonModule,

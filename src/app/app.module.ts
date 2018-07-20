@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import {MatInputModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +34,8 @@ import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.co
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    PostModule
+    PostModule,
+    MatInputModule
   ],
   // providers: [PostService],                   // providers are used for services
   providers: [
