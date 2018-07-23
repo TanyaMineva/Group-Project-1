@@ -23,7 +23,7 @@ export class PostService {
     // return [...this.posts];  // We copy the array so that we don't change the original one. This happends with [...arrayToBeCopied]
     this.http
       .get<{message: string, posts: any, maxPosts: number}>(
-        BACKEND_URL + queryParams
+        BACKEND_URL + queryParams 
       )
       .pipe(
         map((postData) => {

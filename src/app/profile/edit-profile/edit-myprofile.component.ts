@@ -89,24 +89,24 @@ import { ProfileService } from '../profile.service';
     }
     onImagePicked(event: Event) {
       const file = (event.target as HTMLInputElement).files[0];
-      this.form.patchValue({image: file});
+      this.form.patchValue({ image: file });
       this.form.get('logo').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
       };
       reader.readAsDataURL(file);
-  }
-
-  saveProfile() {
-    if (this.form.invalid) {
-      console.log('hI');
-      return;
     }
-    this.isLoading = true;
-    if (this.mode === 'create') {
-      this.profilesService.addProfile(this.form.value.name, this.form.value.location, this.form.value.logo,this.form.value.website,this.form.value.services,this.form.value.workfield,this.form.value.number,this.form.value.year);
-    } 
+    
+    saveProfile() {
+      if (this.form.invalid) {
+        console.log('hI');
+        return;
+      }
+      this.isLoading = true;
+      if (this.mode === 'create') {
+        this.profilesService.addProfile(this.form.value.name, this.form.value.location, this.form.value.logo,this.form.value.website,this.form.value.services,this.form.value.workfield,this.form.value.number,this.form.value.year);
+      } 
     this.form.reset();
     this.router.navigate(['/profile']);
   }

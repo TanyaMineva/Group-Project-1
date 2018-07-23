@@ -61,8 +61,6 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
     this.isLoading = true;
   }
   
-  
-  
   editProfile() {
     this.router.navigate(['/edit']);
   }

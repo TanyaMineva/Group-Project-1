@@ -119,16 +119,17 @@ export class ProfileService {
     profileData.append('website', website);
     profileData.append('logo', logo);
     this.http
-      .post<{ message: string, profile: Profile }>(
-        BACKEND_URL,
-        profileData)
+    .post<{ message: string, profile: Profile }>(
+      BACKEND_URL,
+      profileData)
       .subscribe(responseData => {
+        console.log("Image patched");
         this.router.navigate(['/']); // We navigate to profile-create-component and ngOnInit() gets the profiles
       });   // Nothing will happen if we don't subscribe
   }
 
 
-  updateProfile( id: string,name: string, location: string, number: string, workfield: string, services: string, year: string,website: string, logo: File | string ) {
+  updateProfile( id: string, name: string, location: string, number: string, workfield: string, services: string, year: string,website: string, logo: File | string ) {
     let profileData: Profile | FormData;
     // const profile: profile = { id: id, title: title, content: content, number: number;
     if (typeof(logo) === 'object') {   // If the img is a file we create a formData object

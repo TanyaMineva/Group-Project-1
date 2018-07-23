@@ -8,69 +8,66 @@
                 <div class="panel-body">
                     <div class="box box-info">
                         <div class="box-body">
-                          <form [formGroup]="form" *ngIf="!isLoading">
-                            <div class="col-sm-6">
-                                <div align="center">
-                                    <div *ngIf="imagePreview !== ''">
-                                        <img alt="" [src]="imagePreview" id="profile-image1" class="img-circle img-responsive">
+                            <form [formGroup]="form" *ngIf="!isLoading">
+                                <div class="col-sm-6">
+                                    <div align="center">
+                                        <div *ngIf="imagePreview !== ''">
+                                            <img alt="" [src]="imagePreview" id="profile-image1" class="img-circle img-responsive">
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-warning" (click)="filePicker.click()" style="margin-top:0.7em;">Pick Image</button>
+                                            <input type="file" #filePicker (change)="onImagePicked($event)" formControlName="logo" required>
+                                        </div>
+                                        <div style="color:#999;">click here to add company's logo</div>
+                                        <!--Upload Image Js And Css-->
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn btn-warning" (click)="filePicker.click()" style="margin-top:0.7em;">Pick Image</button>
-                                        <input type="file" #filePicker (change)="onImagePicked($event)">
-                                    </div>
-                                    <div>
-                                    <input id="profile-image-upload" class="hidden" type="file" formControlName="logo" required>
+                                    <br>
+                                    <!-- /input-group -->
                                 </div>
-                                    <div style="color:#999;">click here to add company's logo</div>
-                                    <!--Upload Image Js And Css-->
-                                </div>
-                                <br>
-                                <!-- /input-group -->
-                            </div>
-                            <div class="col-sm-6">
-                                <span>
+                                <div class="col-sm-6">
+                                    <span>
                                     <mat-form-field>
                                      <input matInput type="text" formControlName="name" placeholder="Company name" style="cursor: pointer;" required>
                                     </mat-form-field>
                                 </span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <hr style="margin:5px 0 5px 0;">
-
-                            <div class="col-sm-6 col-xs-7 tital ">
-
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 4%;">Website: </div>
-
+                                </div>
                                 <div class="clearfix"></div>
-                                <div class="bot-border"></div>
+                                <hr style="margin:5px 0 5px 0;">
 
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 4%;">Phone number: </div>
+                                <div class="col-sm-6 col-xs-7 tital ">
 
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 4%;">Website: </div>
 
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 8%;">Workfield: </div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
 
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 4%;">Phone number: </div>
 
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 7%;">Services: </div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
 
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 8%;">Workfield: </div>
 
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 1%;">Year of creation:</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
 
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 7%;">Services: </div>
 
-                                <div class="col-sm-5 col-xs-6 tital " style="margin-top: 6%;">Location:</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
 
-                                <div class="clearfix"></div>
-                                <div class="bot-border"></div>
-                            </div>
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 1%;">Year of creation:</div>
 
-                            <div class="col-sm-6 col-xs-5 ">
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+
+                                    <div class="col-sm-5 col-xs-6 tital " style="margin-top: 6%;">Location:</div>
+
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+                                </div>
+
+                                <div class="col-sm-6 col-xs-5 ">
                                     <mat-form-field>
                                         <div class="col-sm-7 col-xs-6 ">
                                             <input matInput type="url" formControlName="website" placeholder="Company website" style="cursor: pointer;" required>
@@ -118,15 +115,15 @@
                                             <input matInput type="text" formControlName="location" placeholder="Location" style="cursor: pointer;" required>
                                         </div>
                                     </mat-form-field>
-                            </div>
+                                </div>
 
-                            <div class="clearfix"></div>
-                            <div class="border" style="margin-top: 5%; border-style: solid; border-width: 1px; border-color: #6495ED;"></div>
+                                <div class="clearfix"></div>
+                                <div class="border" style="margin-top: 5%; border-style: solid; border-width: 1px; border-color: #6495ED;"></div>
 
-                            <mat-action-row>
-                                <button mat-button (click)="saveProfile()" color="primary" style="float: right; margin-top: 1%;">SAVE</button>
-                            </mat-action-row>
-                          </form>
+                                <mat-action-row>
+                                    <button mat-button (click)="saveProfile()" color="primary" style="float: right; margin-top: 1%;" type="button">SAVE</button>
+                                </mat-action-row>
+                            </form>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
@@ -134,12 +131,5 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(function() {
-                $('#profile-image1').on('click', function() {
-                    $('#profile-image-upload').click();
-                });
-            });
-        </script>
     </div>
 </div>
