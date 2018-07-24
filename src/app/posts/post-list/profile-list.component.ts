@@ -20,7 +20,7 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     // { title: 'Third profile', content: 'This is the third profile\'s content'}
   // ];
 
-  profiles: Profile;  // Only from the parent component
+  profiles: Profile[];  // Only from the parent component
   // profilesService: profileService;
   isLoading = false;
   totalProfiles = 0;
@@ -45,9 +45,9 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     this.userId = this.authService.getUserId();
     this.profilesSub = this.profilesService
       .getProfileUpdateListener()
-      .subscribe((profileData: {profiles2: Profile}) => {
+      .subscribe((profileData: {profiles: Profile[]}) => {
         this.isLoading = false;
-        this.profiles = profileData.profiles2;
+        this.profiles = profileData.profiles;
       });
       this.userIsAuthenticated = this.authService.getIsAuth();
       this.authStatusSub = this.authService

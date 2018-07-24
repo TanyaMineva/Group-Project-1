@@ -3,7 +3,7 @@ const multer = require("multer");
 const MIME_TYPE_MAP = {
     'image/png': 'png',
     'image/jpeg': 'jpg',
-    'image/jpg': 'jpg',
+    'image/jpg': 'jpg'
 }
 
 const storage = multer.diskStorage({
@@ -22,4 +22,4 @@ const storage = multer.diskStorage({
     }
 });
 
-module.exports = multer({ storage: storage }).single("image");
+module.exports = multer({storage: storage}).single('logo');

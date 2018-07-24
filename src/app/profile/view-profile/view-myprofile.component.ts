@@ -33,10 +33,10 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
     this.userId = this.authService.getUserId();
     this.profilesSub = this.profilesService
     .getProfileUpdateListener()
-    .subscribe((profileData: {profiles2: Profile}) => {
+    .subscribe((profileData: {profiles: Profile[]}) => {
       console.log('Hellooo');
       this.isLoading = false;
-      this.profiles2 = profileData.profiles2;
+      this.profiles = profileData.profiles;
     });
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authStatusSub = this.authService

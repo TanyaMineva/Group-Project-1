@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
+  logopath: { type: String, required: true},
   name: { type: String, required: true },
-  location: { type: String, required: true },
-  logo: { type: String, required: true},
   website: { type: String, required: true},
+  number: { type: String, required: true},
   workfield: { type: String, required: true},
   services: { type: String, required: true},
   year: { type: String, required: true},
-  number: { type: String, required: true},
+  location: { type: String, required: true },
 
 
 })

@@ -22,30 +22,30 @@ import { ProfileService } from '../profile.service';
 
     ngOnInit() {
       this.form = new FormGroup({
-        'location': new FormControl(null, {
-          validators: [Validators.required]
-        }),
-        'year': new FormControl(null, {
-          validators: [Validators.required, Validators.minLength(4), Validators.maxLength(4)]
+        'logo': new FormControl(null, {
+          validators: [Validators.required],
+          asyncValidators: [mimeType]
         }),
         'name': new FormControl(null, {
           validators: [Validators.required]
         }),
-        'services': new FormControl(null, {
-          validators: [Validators.required]
-        }),
-        'workfield': new FormControl(null, {
+        'website': new FormControl(null, {
           validators: [Validators.required]
         }),
         'number': new FormControl(null, {
           validators: [Validators.required, Validators.minLength(8)]
         }),
-        'website': new FormControl(null, {
+        'workfield': new FormControl(null, {
           validators: [Validators.required]
         }),
-        'logo': new FormControl(null, {
-          validators: [Validators.required],
-          asyncValidators: [mimeType]
+        'services': new FormControl(null, {
+          validators: [Validators.required]
+        }),
+        'year': new FormControl(null, {
+          validators: [Validators.required, Validators.minLength(4), Validators.maxLength(4)]
+        }),
+        'location': new FormControl(null, {
+          validators: [Validators.required]
         })
       });
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -58,24 +58,24 @@ import { ProfileService } from '../profile.service';
               this.isLoading = false;
               this.profile = {
                 id: profileData._id,
+                logopath: profileData.logopath,
                 name: profileData.name,
-                location: profileData.location,
-                logo: profileData.logo,
-                number: profileData.number,
                 website: profileData.website,
-                services: profileData.services,
+                number: profileData.number,
                 workfield: profileData.workfield,
-                year: profileData.year
+                services: profileData.services,
+                year: profileData.year,
+                location: profileData.location
               };
               this.form.setValue({
+              'logo': this.profile.logopath,
               'name': this.profile.name,
-              'location': this.profile.location,
-              'year': this.profile.year,
-              'services': this.profile.services,
-              'workfield': this.profile.workfield,
-              'number': this.profile.number,
               'website': this.profile.website,
-              'logo': this.profile.logo
+              'number': this.profile.number,
+              'workfield': this.profile.workfield,
+              'services': this.profile.services,
+              'year': this.profile.year,
+              'location': this.profile.location
               });
             });
         } else {
@@ -100,12 +100,14 @@ import { ProfileService } from '../profile.service';
     
     saveProfile() {
       if (this.form.invalid) {
-        console.log('hI');
+        console.log('Form is invalid');
         return;
       }
       this.isLoading = true;
       if (this.mode === 'create') {
-        this.profilesService.addProfile(this.form.value.name, this.form.value.location, this.form.value.logo,this.form.value.website,this.form.value.services,this.form.value.workfield,this.form.value.number,this.form.value.year);
+        this.profilesService.addProfile(this.form.value.logo, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
+        console.log('Profile data saved.');
+        console.log(this.form.value.name);
       } 
     this.form.reset();
     this.router.navigate(['/profile']);

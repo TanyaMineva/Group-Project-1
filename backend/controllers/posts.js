@@ -1,16 +1,18 @@
 const Profile = require('../models/post');
 
+
 exports.createProfile = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host");
     const profile = new Profile({
+        logopath: url + "/images/" + 'gosho',
+        // logopath: url + "/images/" + req.file.filename,
         name: req.body.name,
-        location: req.body.location,
-        logo: url + "/images/" + req.file.filename,
-        services: req.body.services,
-        workfield: req.body.workfield,
-        year: req.body.year,
         website: req.body.website,
-        number: req.body.number
+        number: req.body.number,
+        workfield: req.body.workfield,
+        services: req.body.services,
+        year: req.body.year,
+        location: req.body.location
     });
     profile.save().then(createdProfile => {
             res.status(201).json({
@@ -30,21 +32,21 @@ exports.createProfile = (req, res, next) => {
 
 
 exports.updateProfile = (req, res, next) => {
-    let logo = req.body.logo;
+    let logopath = req.body.logopath;
     if (req.file) {
         const url = req.protocol + '://' + req.get("host");
-        logo = url + "/images/" + req.file.filename
+        logopath = url + "/images/" + req.file.filename;
     }
     const profile = new Profile({
         _id: req.body.id,
+        logopath: logopath,
         name: req.body.name,
-        location: req.body.location,
-        logo: logo,
-        services: req.body.services,
-        workfield: req.body.workfield,
-        year: req.body.year,
         website: req.body.website,
-        number: req.body.number
+        number: req.body.number,
+        workfield: req.body.workfield,
+        services: req.body.services,
+        year: req.body.year,
+        location: req.body.location
     });
     profile.updateOne({ _id: req.params.id }, profile)
         .then(result => {
@@ -62,25 +64,18 @@ exports.updateProfile = (req, res, next) => {
 }
 
 exports.getProfiles = (req, res, next) => { // FIRST middleware, only requsests targeting /api/profiles will reach this
-    const pageSize = +req.query.pagesize;
-    const currentPage = +req.query.page;
     const profileQuery = Profile.find();
     let fetchedProfiles;
-    if (pageSize && currentPage) {
-        profileQuery
-            .skip(pageSize * (currentPage - 1))
-            .limit(pageSize);
-    }
     profileQuery.find()
         .then(documents => {
+            console.log(documents);
             fetchedProfiles = documents;
             return Profile.count();
         })
         .then(count => {
             res.status(200).json({
                 message: 'profiles fetched successfully!',
-                profiles: fetchedProfiles,
-                maxProfiles: count
+                profiles: fetchedProfiles
             });
         })
         .catch(error => {

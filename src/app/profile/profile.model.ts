@@ -1,12 +1,12 @@
 export interface Profile {
     id: string;
+    logopath: string;
     name: string;
-    location: string;
+    website: string;
     number: string;
     workfield: string;
-    website: string;
     services: string;
-    logo: string;
     year: string;
+    location: string;
   }
   
