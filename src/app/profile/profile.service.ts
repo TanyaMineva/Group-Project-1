@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { Profile } from '../profile/profile.model';
+import { AuthService } from '../auth/auth.service';
 
 const BACKEND_URL = environment.apiUrl + '/profile/';
 
@@ -14,11 +15,11 @@ const BACKEND_URL = environment.apiUrl + '/profile/';
                                    // Only creates one instance of the service fot he entire app
 export class ProfileService {
   private profiles: Profile[] = [];
+ hasProfile = this.authService.getHasProfile();
   
   private profilesUpdated = new Subject<{profiles: Profile[], profileCount: number}>();
   
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   getProfiles(profilesPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${profilesPerPage}&page=${currentPage}`;
@@ -39,7 +40,8 @@ export class ProfileService {
               workfield: profile.workfield,
               services: profile.services,
               year: profile.year,
-              location: profile.location
+              location: profile.location,
+              creator: profile.creator
             };
           }),
           maxProfiles: profileData.maxProfiles
@@ -72,7 +74,8 @@ export class ProfileService {
               workfield: profile.workfield,
               services: profile.services,
               year: profile.year,
-              location: profile.location
+              location: profile.location,
+              creator: profile.creator
             };
           }),
           maxProfiles: profileData.maxProfiles
@@ -103,6 +106,7 @@ export class ProfileService {
       services: string;
       year: string;
       location: string;
+      creator: string;
     }>(
       BACKEND_URL + id
     );
@@ -119,12 +123,17 @@ export class ProfileService {
     profileData.append('services', services);
     profileData.append('year', year);
     profileData.append('location', location);
+
     console.log('Data is here');
     this.http
     .post<{ message: string, profile: Profile }>( BACKEND_URL, profileData)
       .subscribe(responseData => {
         console.log("Image patched");
       });   // Nothing will happen if we don't subscribe
+  
+      this.authService.updateAuthData('true');
+    
+
   }
 
 
@@ -152,16 +161,20 @@ export class ProfileService {
         workfield: workfield,
         services: services,
         year: year,
-        location: location
+        location: location,
+        creator:null
       };
     }
-    const profile: Profile = {id: id, logopath: null, name: name, website: website, number: number, workfield: workfield, services: services, year: year, location: location};
+    const profile: Profile = {id: id, logopath: null, name: name, website: website, number: number, workfield: workfield, services: services, year: year, location: location, creator: null};
     this.http
     .put(BACKEND_URL + id, profileData)
     .subscribe(response => {
       this.router.navigate(['/']); // We navigate to profile-create-component and ngOnInit() fetches the profiles
     });
   }
+
+
+
 
   deleteprofile(profileId: string) {
     return this.http

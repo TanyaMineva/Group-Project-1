@@ -6,6 +6,7 @@ import { Profile } from '../profile.model';
 import { mimeType } from '../../profile/edit-profile/mime-type.validator';
 import { ProfileService } from '../profile.service';
 
+
 @Component({   // Decorator
     templateUrl: './edit-myprofile.component.html',
     styleUrls: ['./edit-myprofile.component.css']
@@ -16,11 +17,12 @@ import { ProfileService } from '../profile.service';
     profile: Profile;
     private mode = 'create';
     isLoading = false;
-    public profileId: string;
+    private profileId: string;
   constructor(public profilesService: ProfileService, public authService: AuthService, public router: Router,public route: ActivatedRoute) {}
 
 
     ngOnInit() {
+      
       this.form = new FormGroup({
         'logo': new FormControl(null, {
           validators: [Validators.required],
@@ -49,7 +51,7 @@ import { ProfileService } from '../profile.service';
         })
       });
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
-        if (paramMap.has('profileId')) {
+        if ((this.authService.getHasProfile()) === 'true') {
           this.mode = 'edit';
           this.profileId = paramMap.get('profileId');
           this.isLoading = true;
@@ -65,7 +67,8 @@ import { ProfileService } from '../profile.service';
                 workfield: profileData.workfield,
                 services: profileData.services,
                 year: profileData.year,
-                location: profileData.location
+                location: profileData.location,
+                creator: profileData.creator
               };
               this.form.setValue({
               'logo': this.profile.logopath,
@@ -82,6 +85,7 @@ import { ProfileService } from '../profile.service';
           this.mode = 'create';
           this.profileId = null;
         }
+        console.log(this.mode);
       });
 
 
@@ -108,7 +112,9 @@ import { ProfileService } from '../profile.service';
         this.profilesService.addProfile(this.form.value.logo, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
         console.log('Profile data saved.');
         console.log(this.form.value.name);
-      } 
+      } else {
+        this.profilesService.updateProfile(this.profileId, this.form.value.logo, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
+      }
     this.form.reset();
     this.router.navigate(['/profile']);
   }

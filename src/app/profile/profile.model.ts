@@ -8,5 +8,6 @@ export interface Profile {
     services: string;
     year: string;
     location: string;
+    creator: string;
   }
   

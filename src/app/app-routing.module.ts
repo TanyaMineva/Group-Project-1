@@ -9,8 +9,8 @@ import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.co
 
 const routes: Routes = [
   { path: '', component: ProfileListComponent },
-  { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
+  //{ path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
+  //{ path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: 'edit', component: EditMyProfileComponent },
   { path: 'profile', component: ViewMyProfileComponent }

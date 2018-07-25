@@ -17,14 +17,16 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
   form: FormGroup;
   imagePreview: string;
   profiles: Profile[] = [];  // Only from the parent component
-  profiles2: Profile;  // Only from the parent component
-  // profilesService: ProfileService;
+   // Only from the parent component
+  targetProfile: Profile;// profilesService: ProfileService;
   isLoading = false;
   public userIsAuthenticated = false;
   userId: string;
+
   private profilesSub: Subscription;
   private authStatusSub: Subscription;
 
+  
   constructor(public profilesService: ProfileService, public authService: AuthService, public router: Router) { }
   
   ngOnInit() {
@@ -37,6 +39,13 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
       console.log('Hellooo');
       this.isLoading = false;
       this.profiles = profileData.profiles;
+      // tslint:disable-next-line:prefer-const
+      for(let target of this.profiles) {
+        if (target.creator === this.authService.getUserId()) {
+          this.targetProfile = target;
+          break;
+        }
+      }
     });
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authStatusSub = this.authService

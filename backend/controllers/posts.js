@@ -2,9 +2,9 @@ const Profile = require('../models/post');
 
 
 exports.createProfile = (req, res, next) => {
-    const url = req.protocol + '://' + req.get("host");
+    const url = req.protocol + '://' + req.get("host"); 
     const profile = new Profile({
-        logopath: url + "/images/" + 'gosho',
+        logopath: url + "/images/" + 'gosho.jpg',
         // logopath: url + "/images/" + req.file.filename,
         name: req.body.name,
         website: req.body.website,
@@ -12,7 +12,8 @@ exports.createProfile = (req, res, next) => {
         workfield: req.body.workfield,
         services: req.body.services,
         year: req.body.year,
-        location: req.body.location
+        location: req.body.location,
+        creator: req.userData.userId
     });
     profile.save().then(createdProfile => {
             res.status(201).json({
@@ -46,9 +47,10 @@ exports.updateProfile = (req, res, next) => {
         workfield: req.body.workfield,
         services: req.body.services,
         year: req.body.year,
-        location: req.body.location
+        location: req.body.location,
+        creator: req.userData.userId
     });
-    profile.updateOne({ _id: req.params.id }, profile)
+    profile.updateOne({ _id: req.params.id, creator: req.userData.userId }, profile)
         .then(result => {
             if (result.n > 0) {
                 res.status(200).json({ message: "Update successfull!" })
@@ -97,7 +99,7 @@ exports.getProfile = (req, res, next) => {
 }
 
 exports.deleteProfile = (req, res, next) => {
-    profile.deleteOne({ _id: req.params.id }).then(
+    profile.deleteOne({ _id: req.params.id, creator:req.userData.userId }).then(
             result => {
                 if (result.n > 0) {
                     res.status(200).json({ message: "Deletion successfull!" })
