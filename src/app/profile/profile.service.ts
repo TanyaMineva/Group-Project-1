@@ -15,7 +15,6 @@ const BACKEND_URL = environment.apiUrl + '/profile/';
                                    // Only creates one instance of the service fot he entire app
 export class ProfileService {
   private profiles: Profile[] = [];
- hasProfile = this.authService.getHasProfile();
   
   private profilesUpdated = new Subject<{profiles: Profile[], profileCount: number}>();
   
@@ -130,10 +129,6 @@ export class ProfileService {
       .subscribe(responseData => {
         console.log("Image patched");
       });   // Nothing will happen if we don't subscribe
-  
-      this.authService.updateAuthData('true');
-    
-
   }
 
 

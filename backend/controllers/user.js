@@ -43,7 +43,7 @@ exports.userLogin = (req, res, next) => {
         });
       }
       fetchedUser = user;
-      return bcrypt.compare(req.body.password, user.password)
+      return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
       if (!result) {                         // Wrong password

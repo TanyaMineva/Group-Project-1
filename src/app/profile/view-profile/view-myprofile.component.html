@@ -26,7 +26,7 @@
                                 <!-- /input-group -->
                             </div>
                             <div class="col-sm-6" >
-                                <h4 style="color:#00b1b1;"  >{{ targetProfile.name }}</h4>
+                                <h4 style="color:#00b1b1;"  >{{ profile.name }}</h4>
                                 <span>
                                     <p >Company name</p>
                                 </span>
@@ -35,40 +35,40 @@
                             <hr style="margin:5px 0 5px 0;">
 
                             <div class="col-sm-5 col-xs-6 tital ">Website:</div>
-                            <div class="col-sm-7 col-xs-6 "> {{ targetProfile.website }}</div>
+                            <div class="col-sm-7 col-xs-6 "> {{ profile.website }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Phone Number:</div>
-                            <div class="col-sm-7 col-xs-6 ">{{ targetProfile.number }}</div>
+                            <div class="col-sm-7 col-xs-6 ">{{ profile.number }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Workfield:</div>
-                            <div class="col-sm-7"> {{ targetProfile.workfield }}</div>
+                            <div class="col-sm-7"> {{ profile.workfield }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Services:</div>
-                            <div class="col-sm-7"> {{ targetProfile.services }}</div>
+                            <div class="col-sm-7"> {{ profile.services }}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Year of creation:</div>
-                            <div class="col-sm-7">{{ targetProfile.year }}</div>
+                            <div class="col-sm-7">{{ profile.year }}</div>
 
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
 
                             <div class="col-sm-5 col-xs-6 tital ">Location:</div>
-                            <div class="col-sm-7">{{ targetProfile.location }}</div>
+                            <div class="col-sm-7">{{ profile.location }}</div>
 
 
                             <div class="clearfix"></div>
                             <div class="border" style="margin-top: 5%; border-style: solid; border-width: 1px; border-color: #6495ED;"></div>
 
                             <mat-action-row>
-                                <button mat-button (click)='editProfile()' color="primary" style="float: right; margin-top: 1%;">EDIT</button>
+                                <button mat-button color="primary" style="float: right; margin-top: 1%;"[routerLink]="['/edit', profile.id]">EDIT</button>
                             </mat-action-row>
                             <!-- /.box-body -->
                         </div>

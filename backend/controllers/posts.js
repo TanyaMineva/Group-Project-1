@@ -4,8 +4,7 @@ const Profile = require('../models/post');
 exports.createProfile = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host"); 
     const profile = new Profile({
-        logopath: url + "/images/" + 'gosho.jpg',
-        // logopath: url + "/images/" + req.file.filename,
+        logopath: url + "/images/" + req.file.filename,
         name: req.body.name,
         website: req.body.website,
         number: req.body.number,
@@ -50,7 +49,7 @@ exports.updateProfile = (req, res, next) => {
         location: req.body.location,
         creator: req.userData.userId
     });
-    profile.updateOne({ _id: req.params.id, creator: req.userData.userId }, profile)
+    Profile.updateOne({ _id: req.params.id, creator: req.userData.userId }, profile)
         .then(result => {
             if (result.n > 0) {
                 res.status(200).json({ message: "Update successfull!" })
@@ -88,7 +87,7 @@ exports.getProfiles = (req, res, next) => { // FIRST middleware, only requsests 
 }
 
 exports.getProfile = (req, res, next) => {
-    profile.findById(req.params.id)
+    Profile.findById(req.params.id)
         .then(profile => {
             if (profile) {
                 res.status(200).json(profile);
@@ -99,7 +98,7 @@ exports.getProfile = (req, res, next) => {
 }
 
 exports.deleteProfile = (req, res, next) => {
-    profile.deleteOne({ _id: req.params.id, creator:req.userData.userId }).then(
+    Profile.deleteOne({ _id: req.params.id, creator:req.userData.userId }).then(
             result => {
                 if (result.n > 0) {
                     res.status(200).json({ message: "Deletion successfull!" })

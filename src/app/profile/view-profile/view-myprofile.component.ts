@@ -18,7 +18,7 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
   imagePreview: string;
   profiles: Profile[] = [];  // Only from the parent component
    // Only from the parent component
-  targetProfile: Profile;// profilesService: ProfileService;
+  profile: Profile;// profilesService: ProfileService;
   isLoading = false;
   public userIsAuthenticated = false;
   userId: string;
@@ -42,7 +42,7 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
       // tslint:disable-next-line:prefer-const
       for(let target of this.profiles) {
         if (target.creator === this.authService.getUserId()) {
-          this.targetProfile = target;
+          this.profile = target;
           break;
         }
       }
@@ -55,6 +55,8 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
       this.userId = this.authService.getUserId();
     });
   }
+
+
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ logo: file });
@@ -70,9 +72,6 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
     this.isLoading = true;
   }
   
-  editProfile() {
-    this.router.navigate(['/edit']);
-  }
 
   ngOnDestroy() {
     this.profilesSub.unsubscribe();

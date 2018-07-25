@@ -5,6 +5,7 @@ import { Router, ParamMap, ActivatedRoute } from '@angular/router';
 import { Profile } from '../profile.model';
 import { mimeType } from '../../profile/edit-profile/mime-type.validator';
 import { ProfileService } from '../profile.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({   // Decorator
@@ -13,16 +14,22 @@ import { ProfileService } from '../profile.service';
   })
   export class EditMyProfileComponent implements OnInit {
     form: FormGroup;
+    isLoading = false;
     imagePreview: string;
     profile: Profile;
     private mode = 'create';
-    isLoading = false;
     private profileId: string;
+    private authStatusSub: Subscription;
   constructor(public profilesService: ProfileService, public authService: AuthService, public router: Router,public route: ActivatedRoute) {}
 
 
     ngOnInit() {
-      
+      this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+        authStatus => {
+          this.isLoading = false;
+        }
+      );
+
       this.form = new FormGroup({
         'logo': new FormControl(null, {
           validators: [Validators.required],
@@ -51,7 +58,7 @@ import { ProfileService } from '../profile.service';
         })
       });
       this.route.paramMap.subscribe((paramMap: ParamMap) => {
-        if ((this.authService.getHasProfile()) === 'true') {
+        if (paramMap.has('profileId')) {
           this.mode = 'edit';
           this.profileId = paramMap.get('profileId');
           this.isLoading = true;
