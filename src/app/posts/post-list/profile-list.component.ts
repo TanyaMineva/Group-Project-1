@@ -7,6 +7,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Profile } from '../../profile/profile.model';
 import { ProfileService } from '../../profile/profile.service';
 
+
 @Component({
   selector: 'app-profile-list',
   templateUrl: './profile-list.component.html',
@@ -14,12 +15,6 @@ import { ProfileService } from '../../profile/profile.service';
 })
 
 export class ProfileListComponent implements OnInit, OnDestroy {
-  // profiles = [
-    // { title: 'First profile', content: 'This is the first profile\'s content'},
-    // { title: 'Second profile', content: 'This is the second profile\'s content'},
-    // { title: 'Third profile', content: 'This is the third profile\'s content'}
-  // ];
-
   form: FormGroup;
   imagePreview: string;
   profiles: Profile[] = [];  // Only from the parent component
@@ -63,6 +58,9 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     this.profilesSub.unsubscribe();
     this.authStatusSub.unsubscribe();
   }
+
+
+  
 }
 
 

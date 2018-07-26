@@ -124,6 +124,7 @@ import { Subscription } from 'rxjs';
         this.profilesService.updateProfile(this.profileId, this.form.value.image, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
       }
     this.form.reset();
+    window.location.reload();
     this.router.navigate(['/profile']);
   }
 }

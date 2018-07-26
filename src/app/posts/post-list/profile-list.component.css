@@ -1,3 +1,6 @@
+
+/* BEGIN */
+
 input.hidden {
   display: table;
   margin: 2em auto auto auto;
@@ -29,7 +32,7 @@ input.hidden {
   margin: 5px 0 5px 0
 }
 
-
+            /* END */
 
 :host {
   display: block;
