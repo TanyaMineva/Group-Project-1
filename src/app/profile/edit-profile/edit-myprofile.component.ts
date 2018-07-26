@@ -31,7 +31,7 @@ import { Subscription } from 'rxjs';
       );
 
       this.form = new FormGroup({
-        'logo': new FormControl(null, {
+        'image': new FormControl(null, {
           validators: [Validators.required],
           asyncValidators: [mimeType]
         }),
@@ -67,7 +67,7 @@ import { Subscription } from 'rxjs';
               this.isLoading = false;
               this.profile = {
                 id: profileData._id,
-                logopath: profileData.logopath,
+                imagepath: profileData.imagepath,
                 name: profileData.name,
                 website: profileData.website,
                 number: profileData.number,
@@ -78,7 +78,7 @@ import { Subscription } from 'rxjs';
                 creator: profileData.creator
               };
               this.form.setValue({
-              'logo': this.profile.logopath,
+              'image': this.profile.imagepath,
               'name': this.profile.name,
               'website': this.profile.website,
               'number': this.profile.number,
@@ -101,7 +101,7 @@ import { Subscription } from 'rxjs';
     onImagePicked(event: Event) {
       const file = (event.target as HTMLInputElement).files[0];
       this.form.patchValue({ image: file });
-      this.form.get('logo').updateValueAndValidity();
+      this.form.get('image').updateValueAndValidity();
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result;
@@ -116,11 +116,11 @@ import { Subscription } from 'rxjs';
       }
       this.isLoading = true;
       if (this.mode === 'create') {
-        this.profilesService.addProfile(this.form.value.logo, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
+        this.profilesService.addProfile(this.form.value.image, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
         console.log('Profile data saved.');
         console.log(this.form.value.name);
       } else {
-        this.profilesService.updateProfile(this.profileId, this.form.value.logo, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
+        this.profilesService.updateProfile(this.profileId, this.form.value.image, this.form.value.name, this.form.value.website, this.form.value.number, this.form.value.workfield,  this.form.value.services, this.form.value.year, this.form.value.location);
       }
     this.form.reset();
     this.router.navigate(['/profile']);

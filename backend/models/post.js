@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const profileSchema = mongoose.Schema({
-  logopath: { type: String, required: true},
+  imagepath: { type: String, required: true},
   name: { type: String, required: true },
   website: { type: String, required: true},
   number: { type: String, required: true},

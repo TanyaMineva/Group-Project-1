@@ -13,6 +13,7 @@ const routes: Routes = [
   //{ path: 'edit/:postId', component: PostCreateComponent, canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: 'edit/:profileId', component: EditMyProfileComponent, canActivate: [AuthGuard]  },
+  { path: 'edit', component: EditMyProfileComponent  },
   { path: 'profile', component: ViewMyProfileComponent }
 ];
 

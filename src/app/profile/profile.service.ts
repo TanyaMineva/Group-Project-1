@@ -32,7 +32,7 @@ export class ProfileService {
           return { profiles: profileData.profiles.map(profile => {
             return {
               id: profile._id,
-              logopath: profile.logopath,
+              imagepath: profile.imagepath,
               name: profile.name,
               website: profile.website,
               number: profile.number,
@@ -66,7 +66,7 @@ export class ProfileService {
           return { profiles: profileData.profiles.map((profile) => {
             return {
               id: profile._id,
-              logopath: profile.logopath,
+              imagepath: profile.imagepath,
               name: profile.name,
               website: profile.website,
               number: profile.number,
@@ -97,7 +97,7 @@ export class ProfileService {
   getProfile(id: string) {
     return this.http.get<{
       _id: string;
-      logopath: string;
+      imagepath: string;
       name: string;
       website: string;
       number: string;
@@ -112,9 +112,9 @@ export class ProfileService {
   }
 
 
-  addProfile(logo: File, name: string, website: string, number: string, workfield: string, services: string, year: string, location: string) {
+  addProfile(image: File, name: string, website: string, number: string, workfield: string, services: string, year: string, location: string) {
     const profileData = new FormData();
-    profileData.append('logo', logo, name);
+    profileData.append('image', image, name);
     profileData.append('name', name);
     profileData.append('website', website);
     profileData.append('number', number);
@@ -132,13 +132,13 @@ export class ProfileService {
   }
 
 
-  updateProfile( id: string, logo: File | string, name: string, website: string, number: string, workfield: string, services: string, year: string, location: string ) {
+  updateProfile( id: string, image: File | string, name: string, website: string, number: string, workfield: string, services: string, year: string, location: string ) {
     let profileData: Profile | FormData;
     // const profile: profile = { id: id, title: title, content: content, number: number;
-    if (typeof(logo) === 'object') {   // If the img is a file we create a formData object
+    if (typeof(image) === 'object') {   // If the img is a file we create a formData object
       profileData = new FormData();
       profileData.append('id', id);
-      profileData.append('logo', logo, name);
+      profileData.append('image', image, name);
       profileData.append('name', name);
       profileData.append('website', website);
       profileData.append('number', number);
@@ -149,7 +149,7 @@ export class ProfileService {
     } else {
       profileData  = {  // If the img is a string we send normal json data
         id: id,
-        logopath: logo,
+        imagepath: image,
         name: name,
         website: website,
         number: number,
@@ -160,7 +160,7 @@ export class ProfileService {
         creator:null
       };
     }
-    const profile: Profile = {id: id, logopath: null, name: name, website: website, number: number, workfield: workfield, services: services, year: year, location: location, creator: null};
+    const profile: Profile = {id: id, imagepath: null, name: name, website: website, number: number, workfield: workfield, services: services, year: year, location: location, creator: null};
     this.http
     .put(BACKEND_URL + id, profileData)
     .subscribe(response => {

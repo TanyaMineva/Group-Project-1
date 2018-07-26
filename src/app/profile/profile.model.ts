@@ -1,6 +1,6 @@
 export interface Profile {
     id: string;
-    logopath: string;
+    imagepath: string;
     name: string;
     website: string;
     number: string;

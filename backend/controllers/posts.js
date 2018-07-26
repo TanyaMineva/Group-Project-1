@@ -4,7 +4,7 @@ const Profile = require('../models/post');
 exports.createProfile = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host"); 
     const profile = new Profile({
-        logopath: url + "/images/" + req.file.filename,
+        imagepath: url + "/images/" + req.file.filename,
         name: req.body.name,
         website: req.body.website,
         number: req.body.number,
@@ -32,14 +32,14 @@ exports.createProfile = (req, res, next) => {
 
 
 exports.updateProfile = (req, res, next) => {
-    let logopath = req.body.logopath;
+    let imagepath = req.body.imagepath;
     if (req.file) {
         const url = req.protocol + '://' + req.get("host");
-        logopath = url + "/images/" + req.file.filename;
+        imagepath = url + "/images/" + req.file.filename;
     }
     const profile = new Profile({
         _id: req.body.id,
-        logopath: logopath,
+        imagepath: imagepath,
         name: req.body.name,
         website: req.body.website,
         number: req.body.number,
