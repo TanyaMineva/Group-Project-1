@@ -87,6 +87,7 @@ import { Subscription } from 'rxjs';
               'year': this.profile.year,
               'location': this.profile.location
               });
+              this.imagePreview=this.profile.imagepath;
             });
         } else {
           this.mode = 'create';

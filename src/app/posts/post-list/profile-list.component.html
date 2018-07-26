@@ -1,8 +1,96 @@
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 
 
 <form class="form-wrapper cf" style="max-width: 40%;">
   <input type="text" placeholder="Search here..." style="max-width: 75%;" required>
   <button style="max-width: 90px;" type="submit">Search</button>
 </form>
+
+<div class="container">
+  <div style="margin-top: 50%">
+  <div class="row top1" *ngFor='let profile of profiles'  >
+      <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default" >
+              <div class="panel-heading" style="background-color: black; color: white;">
+                  <h4>My Profile</h4>
+              </div>
+              <div class="panel-body" >
+                  <div class="box box-info" >
+                      <div class="box-body"  >
+                          <div class="col-sm-6">
+                              <div align="center">
+                                  <div >
+                                  <img alt="" [src]="profile?.imagepath" id="profile-image2" class="img-circle img-responsive">
+                              </div>
+                                <div *ngIf='profile?.id === null'>
+                                  <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                                </div>
+                                  <input id="profile-image-upload" class="hidden" type="file">
+                                  <!--Upload Image Js And Css-->
+                              </div>
+                              <br>
+                              <!-- /input-group -->
+                          </div>
+                          <div class="col-sm-6" >
+                              <h4 style="color:#00b1b1;"  >{{ profile?.name }}</h4>
+                              <span>
+                                  <p >Company name</p>
+                              </span>
+                          </div>
+                          <div class="clearfix"></div>
+                          <hr style="margin:5px 0 5px 0;">
+
+                          <div class="col-sm-5 col-xs-6 tital ">Website:</div>
+                          <div class="col-sm-7 col-xs-6 "> {{ profile?.website }}</div>
+                          <div class="clearfix"></div>
+                          <div class="bot-border"></div>
+
+                          <div class="col-sm-5 col-xs-6 tital ">Phone Number:</div>
+                          <div class="col-sm-7 col-xs-6 ">{{ profile?.number }}</div>
+                          <div class="clearfix"></div>
+                          <div class="bot-border"></div>
+
+                          <div class="col-sm-5 col-xs-6 tital ">Workfield:</div>
+                          <div class="col-sm-7"> {{ profile?.workfield }}</div>
+                          <div class="clearfix"></div>
+                          <div class="bot-border"></div>
+
+                          <div class="col-sm-5 col-xs-6 tital ">Services:</div>
+                          <div class="col-sm-7"> {{ profile?.services }}</div>
+                          <div class="clearfix"></div>
+                          <div class="bot-border"></div>
+
+                          <div class="col-sm-5 col-xs-6 tital ">Year of creation:</div>
+                          <div class="col-sm-7">{{ profile?.year }}</div>
+
+                          <div class="clearfix"></div>
+                          <div class="bot-border"></div>
+
+                          <div class="col-sm-5 col-xs-6 tital ">Location:</div>
+                          <div class="col-sm-7">{{ profile?.location }}</div>
+
+                          <!-- /.box-body -->
+                      </div>
+                      <!-- /.box -->
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div>
+      <script>
+          $(function() {
+              $('#profile-image1').on('click', function() {
+                  $('#profile-image-upload').click();
+              });
+          });
+      </script>
+      </div>
+  </div>
+
+
 
 

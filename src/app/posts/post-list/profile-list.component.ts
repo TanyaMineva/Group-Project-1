@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy} from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup } from '@angular/forms';
 
 import { AuthService } from '../../auth/auth.service';
 import { Profile } from '../../profile/profile.model';
@@ -20,17 +20,17 @@ export class ProfileListComponent implements OnInit, OnDestroy {
     // { title: 'Third profile', content: 'This is the third profile\'s content'}
   // ];
 
-  profiles: Profile[];  // Only from the parent component
-  // profilesService: profileService;
+  form: FormGroup;
+  imagePreview: string;
+  profiles: Profile[] = [];  // Only from the parent component
+
   isLoading = false;
-  totalProfiles = 0;
-  profilesPerPage = 2;
-  currentPage = 1;
-  pageSizeOptions = [1, 2, 5, 10];
   public userIsAuthenticated = false;
   userId: string;
+
   private profilesSub: Subscription;
   private authStatusSub: Subscription;
+
 
   // Dependency injection with a constructor
   // constructor(profilesService: profileService ) {
@@ -41,28 +41,22 @@ export class ProfileListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.isLoading = true;
-    this.profilesService.getProfiles(this.profilesPerPage, this.currentPage);      // We trigger the http request
+    this.profilesService.getProfiless();      // We trigger the http request
     this.userId = this.authService.getUserId();
     this.profilesSub = this.profilesService
-      .getProfileUpdateListener()
-      .subscribe((profileData: {profiles: Profile[]}) => {
-        this.isLoading = false;
-        this.profiles = profileData.profiles;
-      });
-      this.userIsAuthenticated = this.authService.getIsAuth();
-      this.authStatusSub = this.authService
-        .getAuthStatusListener()
-        .subscribe(isAuthenticated => {
-          this.userIsAuthenticated = isAuthenticated;
-          this.userId = this.authService.getUserId();
-        });
-  }
-
-  onChangedPage(pageData: PageEvent) {
-    this.isLoading = true;
-    this.currentPage = pageData.pageIndex + 1;
-    this.profilesPerPage = pageData.pageSize;
-    this.profilesService.getProfiles(this.profilesPerPage, this.currentPage);
+    .getProfileUpdateListener()
+    .subscribe((profileData: {profiles: Profile[]}) => {
+      console.log('Hellooo');
+      this.isLoading = false;
+      this.profiles = profileData.profiles;
+    });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated;
+      this.userId = this.authService.getUserId();
+    });
   }
 
   ngOnDestroy() {
