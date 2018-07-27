@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ProfileListComponent } from './posts/post-list/profile-list.component';
-import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EditMyProfileComponent } from './profile/edit-profile/edit-myprofile.component';
 import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.component';
