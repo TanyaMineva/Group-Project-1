@@ -163,8 +163,7 @@ export class ProfileService {
     const profile: Profile = {id: id, imagepath: null, name: name, website: website, number: number, workfield: workfield, services: services, year: year, location: location, creator: null};
     this.http
     .put(BACKEND_URL + id, profileData)
-    .subscribe(response => {
-      this.router.navigate(['/']); // We navigate to profile-create-component and ngOnInit() fetches the profiles
+    .subscribe(response => { // We navigate to profile-create-component and ngOnInit() fetches the profiles
     });
   }
 

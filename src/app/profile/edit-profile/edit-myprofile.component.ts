@@ -112,8 +112,8 @@ import { Subscription } from 'rxjs';
     
     saveProfile() {
       if (this.form.invalid) {
-        console.log('Form is invalid');
-        return;
+        console.log("Form is invalid");
+        return window.alert('Form is invalid! Please try again!');
       }
       this.isLoading = true;
       if (this.mode === 'create') {
