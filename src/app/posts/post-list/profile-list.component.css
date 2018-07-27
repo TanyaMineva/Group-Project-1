@@ -1,13 +1,12 @@
+ul {
+  list-style-type: none;
+}
 
 /* BEGIN */
 
 input.hidden {
   display: table;
   margin: 2em auto auto auto;
-}
-
-.top1 {
-  margin-top: 7%;
 }
 
 #profile-image1 {

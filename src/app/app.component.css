@@ -10,9 +10,9 @@ main {
 }
 
 #back {
-  background-image:  url("backend/images/lila.png");
+  background-color: #D4E9EA;
   background-size: 100% auto no-repeat;
-  height: 80em;
+  height: 250em;
 }
 
  
