@@ -26,3 +26,8 @@ input.hidden {
 input[type="file"] {
     visibility: hidden;
 }
+
+.btn{
+    background-color: cadetblue;
+    color: white;
+}

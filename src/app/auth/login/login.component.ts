@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLoading = true;
 
     this.authService.login(form.value.email, form.value.password);
-    this.router.navigate(['/profile']);
     console.log('logged in');
     // console.log(this.authService.getToken());
   }

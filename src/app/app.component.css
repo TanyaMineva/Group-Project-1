@@ -3,9 +3,16 @@ main {
   margin: auto;
 }
 
-div {
-  background-image: url("https://designrfix.com/wp-content/uploads/2016/07/desk-notebook-office-macbook.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-  height: 50em;
+#front {
+  background-image:  url("backend/images/newwwww1.jpg");
+  background-size: 100% auto no-repeat;
+  height: 82em;
 }
+
+#back {
+  background-image:  url("backend/images/lila.png");
+  background-size: 100% auto no-repeat;
+  height: 80em;
+}
+
+ 

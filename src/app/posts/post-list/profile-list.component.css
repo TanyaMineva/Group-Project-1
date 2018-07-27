@@ -160,13 +160,13 @@ zoom:1;
 }
 
 .form-wrapper input:-moz-placeholder {
-  color: #999;
+  color:#999;
   font-weight: normal;
   font-style: italic;
 }
 
 .form-wrapper input:-ms-input-placeholder {
-  color: #999;
+  color:#999;
   font-weight: normal;
   font-style: italic;
 }

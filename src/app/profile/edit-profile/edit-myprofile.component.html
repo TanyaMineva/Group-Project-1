@@ -12,13 +12,14 @@
                                 <div class="col-sm-6">
                                     <div align="center">
                                         <div *ngIf="imagePreview !== ''">
-                                            <img alt="" [src]="imagePreview"  id="profile-image1" class="img-circle img-responsive">
+                                            <img alt="" [src]="imagePreview" id="profile-image1" class="img-circle img-responsive">
                                         </div>
                                         <div>
-                                            <button type="button" class="btn btn-warning" (click)="filePicker.click()" style="margin-top:0.7em;">Pick Image</button>
+                                            <button type="button" class="btn g" (click)="filePicker.click()" style="margin-top:0.7em;">Pick Image</button>
                                             <input type="file" #filePicker (change)="onImagePicked($event)">
                                         </div>
                                         <div style="color:#999;">click here to add company's logo</div>
+
                                         <!--Upload Image Js And Css-->
                                     </div>
                                     <br>
@@ -26,10 +27,10 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <span>
-                                    <mat-form-field>
-                                     <input matInput type="text" formControlName="name" placeholder="Company name" style="cursor: pointer;" required>
-                                    </mat-form-field>
-                                </span>
+                                        <mat-form-field>
+                                            <input matInput type="text" formControlName="name" placeholder="Company name" style="cursor: pointer;" required>
+                                        </mat-form-field>
+                                    </span>
                                 </div>
                                 <div class="clearfix"></div>
                                 <hr style="margin:5px 0 5px 0;">
@@ -103,7 +104,8 @@
 
                                     <mat-form-field>
                                         <div class="col-sm-7 col-xs-6 ">
-                                            <input matInput type="number" min="1800" max="2018" formControlName="year" placeholder="Year of creation" style="cursor: pointer;" required>
+                                            <input matInput type="number" min="1800" max="2018" formControlName="year" placeholder="Year of creation" style="cursor: pointer;"
+                                                required>
                                         </div>
                                         <mat-error *ngIf="form.get('year').invalid && form.get('year').touched">Please enter an existing year.</mat-error>
                                     </mat-form-field>
