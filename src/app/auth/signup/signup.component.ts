@@ -24,9 +24,13 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSignUp(form: NgForm) {
-   if (form.invalid || (form.value.password !== form.value.passwordConf)) {
+   if (form.value.password !== form.value.passwordConf) {
       console.log('passwords do not match');
       return window.alert('Passwords do not match');
+    }
+    if ( form.invalid ) {
+      console.log('form is invalid');
+      return window.alert('Please fill in all the mandatory fields!');
     }
     this.isLoading = true;
     this.authService.createUser(form.value.email, form.value.password, form.value.adresse, form.value.tel, form.value.name);

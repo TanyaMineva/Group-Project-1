@@ -12,5 +12,5 @@ main {
 #back {
     background-color: #D4E9EA;
     background-size: 100% auto no-repeat;
-    height: 250em;
+    min-height: 250em;
 }

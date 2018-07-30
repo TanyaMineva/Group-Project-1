@@ -1,107 +1,119 @@
 <head>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    </head>
-    
-    
-    
-    <form class="form-wrapper cf" style="max-width: 40%;">
-        <input type="text" id="myInput" placeholder="Search here..." style="max-width: 75%;" required>
-        <button style="max-width: 90px;" type="submit" (click)="filterServices()">Search</button>
-    </form>
-    
-    
-    
-    
-    <div class="container">
-        <div style="margin-top: 50%">
-            <ul id="myUL">
-                <div class="row top1" *ngFor='let profile of profiles'>
-                    <li>
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style="background-color: black; color: white;">
-                                    <h4>My Profile</h4>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="box box-info">
-                                        <div class="box-body">
-    
-                                            <div class="col-sm-6">
-                                                <div align="center">
-                                                    <div>
-                                                        <img alt="" [src]="profile?.imagepath" id="profile-image2" class="img-circle img-responsive">
-                                                    </div>
-                                                    <div *ngIf='profile?.id === null'>
-                                                        <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1"
-                                                            class="img-circle img-responsive">
-                                                    </div>
-                                                    <input id="profile-image-upload" class="hidden" type="file">
-                                                    <!--Upload Image Js And Css-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+
+<form class="form-wrapper cf" style="max-width: 40%;" *ngIf="!isLoading">
+    <input type="text" id="myInput" placeholder="Search here..." style="max-width: 75%;" required>
+    <button style="max-width: 90px;" type="submit" (click)="filterServices()">Search</button>
+</form>
+
+
+
+
+<div class="container">
+    <div class="sk-fading-circle" *ngIf="isLoading">
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+    </div>
+    <div style="margin-top: 50%" *ngIf="!isLoading">
+        <ul id="myUL">
+            <div class="row top1" *ngFor='let profile of profiles'>
+                <li>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="background-color: black; color: white; height: 3em;">
+                            </div>
+                            <div class="panel-body">
+                                <div class="box box-info">
+                                    <div class="box-body">
+
+                                        <div class="col-sm-6">
+                                            <div align="center">
+                                                <div>
+                                                    <img alt="" [src]="profile?.imagepath" id="profile-image2" class="img-circle img-responsive">
                                                 </div>
-                                                <br>
-                                                <!-- /input-group -->
+                                                <div *ngIf='profile?.id === null'>
+                                                    <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1"
+                                                        class="img-circle img-responsive">
+                                                </div>
+                                                <input id="profile-image-upload" class="hidden" type="file">
+                                                <!--Upload Image Js And Css-->
                                             </div>
-                                            <div class="col-sm-6">
-                                                <h4 style="color:#00b1b1;">{{ profile?.name }}</h4>
-                                                <span>
-                                                    Company name
-                                                </span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <hr style="margin:5px 0 5px 0;">
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Website:</div>
-                                            <div class="col-sm-7 col-xs-6 "> {{ profile?.website }}</div>
-                                            <div class="clearfix"></div>
-                                            <div class="bot-border"></div>
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Phone Number:</div>
-                                            <div class="col-sm-7 col-xs-6 ">{{ profile?.number }}</div>
-                                            <div class="clearfix"></div>
-                                            <div class="bot-border"></div>
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Workfield:</div>
-                                            <div class="col-sm-7"> {{ profile?.workfield }}</div>
-                                            <div class="clearfix"></div>
-                                            <div class="bot-border"></div>
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Services:</div>
-                                            <div class="col-sm-7">
-    
-                                                <p>{{ profile?.services }}</p>
-    
-                                            </div>
-    
-                                            <div class="clearfix"></div>
-                                            <div class="bot-border"></div>
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Year of creation:</div>
-                                            <div class="col-sm-7">{{ profile?.year }}</div>
-    
-                                            <div class="clearfix"></div>
-                                            <div class="bot-border"></div>
-    
-                                            <div class="col-sm-5 col-xs-6 tital ">Location:</div>
-                                            <div class="col-sm-7">{{ profile?.location }}</div>
-    
-                                            <!-- /.box-body -->
+                                            <br>
+                                            <!-- /input-group -->
                                         </div>
-                                        <!-- /.box -->
+                                        <div class="col-sm-6">
+                                            <h4 style="color:#00b1b1;">{{ profile?.name }}</h4>
+                                            <span>
+                                                Company name
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <hr style="margin:5px 0 5px 0;">
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Website:</div>
+                                        <div class="col-sm-7 col-xs-6 "> {{ profile?.website }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Phone Number:</div>
+                                        <div class="col-sm-7 col-xs-6 ">{{ profile?.number }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Workfield:</div>
+                                        <div class="col-sm-7"> {{ profile?.workfield }}</div>
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Services:</div>
+                                        <div class="col-sm-7">
+
+                                            <p>{{ profile?.services }}</p>
+
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Year of creation:</div>
+                                        <div class="col-sm-7">{{ profile?.year }}</div>
+
+                                        <div class="clearfix"></div>
+                                        <div class="bot-border"></div>
+
+                                        <div class="col-sm-5 col-xs-6 tital ">Location:</div>
+                                        <div class="col-sm-7">{{ profile?.location }}</div>
+
+                                        <!-- /.box-body -->
                                     </div>
+                                    <!-- /.box -->
                                 </div>
                             </div>
                         </div>
-                    </li>
-                </div>
-                <script>
-                    $(function () {
-                        $('#profile-image1').on('click', function () {
-                            $('#profile-image-upload').click();
-                        });
+                    </div>
+                </li>
+            </div>
+            <script>
+                $(function () {
+                    $('#profile-image1').on('click', function () {
+                        $('#profile-image-upload').click();
                     });
-                </script>
-            </ul>
-        </div>
+                });
+            </script>
+        </ul>
     </div>
+</div>

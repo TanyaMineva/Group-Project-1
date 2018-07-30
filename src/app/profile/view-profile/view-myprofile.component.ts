@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, AfterViewChecked, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ProfileService } from "../profile.service";
 import { AuthService } from "../../auth/auth.service";
@@ -13,7 +13,7 @@ import { PageEvent } from "@angular/material";
   templateUrl: './view-myprofile.component.html',
   styleUrls: ['./view-myprofile.component.css']
 })
-export class ViewMyProfileComponent implements OnInit, OnDestroy {
+export class ViewMyProfileComponent implements OnInit,AfterViewChecked, OnDestroy {
   form: FormGroup;
   imagePreview: string;
   profiles: Profile[] = [];  // Only from the parent component
@@ -37,7 +37,6 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
     .getProfileUpdateListener()
     .subscribe((profileData: {profiles: Profile[]}) => {
       console.log('Hellooo');
-      this.isLoading = false;
       this.profiles = profileData.profiles;
       // tslint:disable-next-line:prefer-const
       for(let target of this.profiles) {
@@ -64,10 +63,13 @@ export class ViewMyProfileComponent implements OnInit, OnDestroy {
     this.router.navigate(['/edit']);
   }
 
+
+  ngAfterViewChecked() {
+    this.isLoading = false;
+  }
   ngOnDestroy() {
     this.profilesSub.unsubscribe();
     this.authStatusSub.unsubscribe();
   }
-
 }
 

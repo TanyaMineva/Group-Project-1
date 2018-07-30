@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { Router, ParamMap, ActivatedRoute } from '@angular/router';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
     templateUrl: './edit-myprofile.component.html',
     styleUrls: ['./edit-myprofile.component.css']
   })
-  export class EditMyProfileComponent implements OnInit {
+  export class EditMyProfileComponent implements OnInit, AfterViewChecked {
     form: FormGroup;
     isLoading = false;
     imagePreview: string;
@@ -112,8 +112,8 @@ import { Subscription } from 'rxjs';
     
     saveProfile() {
       if (this.form.invalid) {
-        console.log("Form is invalid");
-        return window.alert('Form is invalid! Please try again!');
+        console.log('Form is invalid');
+        return window.alert('Please fill in all fields correctly!');
       }
       this.isLoading = true;
       if (this.mode === 'create') {
@@ -126,5 +126,9 @@ import { Subscription } from 'rxjs';
     this.form.reset();
     window.location.reload();
     this.router.navigate(['/profile']);
+  }
+
+  ngAfterViewChecked() {
+    this.isLoading = false;
   }
 }
