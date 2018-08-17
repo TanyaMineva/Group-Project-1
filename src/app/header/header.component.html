@@ -1,16 +1,17 @@
-<div class="w3-top">
+<div class="w3-top" (onscroll)="scroll()">
 
 
     <div class="topnav" id="myNavbar">
-        <a routerLink="/">Home</a>
+        <a routerLink="/" (click)="onActivate($event)" class="to1"><i class="fas fa-home" style="margin-right: 0.4rem;"></i>Home</a>
         <div class="float-right">
-            <a routerLink="/profile" *ngIf="userIsAuthenticated">My Page</a>
+            <a routerLink="/contact" (click)="onActivate($event)" class="to1"><i class="fas fa-map-marker-alt" style="margin-right:0.4rem;"></i>Contact</a>
+            <a routerLink="/profile" *ngIf="userIsAuthenticated" (click)="onActivate($event)" class="to1"><i class="fas fa-id-card" style="margin-right: 0.4rem;"></i>My Page</a>
             <div class="dropdown">
                 <div class="dropbtn">My Profile</div>
                 <div class="dropdown-content">
-                    <a routerLink="/auth/login" *ngIf="!userIsAuthenticated">Login</a>
-                    <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated">Logout</a>
-                    <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated">Sign up</a>
+                    <a routerLink="/auth/login" *ngIf="!userIsAuthenticated" (click)="onActivate($event)" class="to1"><i class="fas fa-sign-in-alt" style="margin-right: 0.4rem; font-size: 16px;"></i>Login</a>
+                    <a class="logout" (click)="onLogout()" *ngIf="userIsAuthenticated" class="to1"><i class="fas fa-sign-out-alt" style="margin-right: 0.4rem; font-size: 16px;"></i>Logout</a>
+                    <a routerLink="/auth/signup" *ngIf="!userIsAuthenticated" (click)="onActivate($event)" class="to1"><i class="fas fa-user-plus"style="margin-right: 0.4rem;font-size: 13.6px;"></i>Sign up</a>
                 </div>
             </div>
         </div>

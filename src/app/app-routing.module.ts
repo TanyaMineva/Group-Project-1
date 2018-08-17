@@ -5,6 +5,8 @@ import { ProfileListComponent } from './posts/post-list/profile-list.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EditMyProfileComponent } from './profile/edit-profile/edit-myprofile.component';
 import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.component';
+import { ContactComponent } from './contact/contact.component';
+
 
 const routes: Routes = [
   { path: '', component: ProfileListComponent },
@@ -13,6 +15,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: 'edit/:profileId', component: EditMyProfileComponent, canActivate: [AuthGuard]  },
   { path: 'edit', component: EditMyProfileComponent  },
+  { path: 'contact', component: ContactComponent  },
   { path: 'profile', component: ViewMyProfileComponent }
 ];
 

@@ -1,0 +1,54 @@
+/*#container {
+    background-color: #D4E9EA;
+}*/
+
+.columnMap {
+    float: left;
+    width: 40%;
+    height: fit-content;
+    padding: 10px;
+    /* Should be removed. Only for demonstration */
+}
+ 
+
+sub,sup {font-size: 20px !important}
+
+/* Clear floats after the columns */
+ 
+.rowMap:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    padding: 0 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .columnMap {
+        flex: 50%;
+        max-width: 50%;
+        display: block;
+    }
+}
+ 
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+ 
+@media screen and (max-width: 600px) {
+    .columnMap {
+        flex: 100%;
+        max-width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+topnav a {font-size: 10 !important}

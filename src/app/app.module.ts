@@ -14,6 +14,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { PostModule } from './posts/posts.module';
 import { EditMyProfileComponent } from './profile/edit-profile/edit-myprofile.component';
 import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.component';
+import { ContactComponent } from './contact/contact.component';
+
 // import { PostService } from './posts/posts.service';
 
 @NgModule({
@@ -23,7 +25,8 @@ import { ViewMyProfileComponent } from './profile/view-profile/view-myprofile.co
     HeaderComponent,
     ErrorComponent,
     EditMyProfileComponent,
-    ViewMyProfileComponent
+    ViewMyProfileComponent,
+    ContactComponent
   ],
   imports: [
     // We import the components
