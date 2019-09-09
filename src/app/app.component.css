@@ -4,7 +4,7 @@ main {
 }
 
 #front {
-    background-image: url("../assets/images/newwwww1.jpg");
+    background-image: url("../../backend/images/newwwww1.jpg");
     background-size: 100% auto no-repeat;
     height: 82em;
 }
